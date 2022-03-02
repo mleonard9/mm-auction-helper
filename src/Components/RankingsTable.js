@@ -25,20 +25,16 @@ function RankingsTable() {
     return 17
   }
 
-  function processData(){
-    let processedData = KenPomData.map((team) => {
-        return {
-          ...team,
-          Seed: getSeed(team.TeamName),
-          Value: (getSeed(team.TeamName) * 4) - team.RankAdjEM
-        }
-    })
-    return processedData
-  }
-
   useEffect(() => {
-    let processedData = processData()
-    setData(processedData.filter(team => team.Seed < 17))
+    let processedData = KenPomData.map((team) => {
+      return {
+        ...team,
+        Seed: getSeed(team.TeamName),
+        Value: (getSeed(team.TeamName) * 4) - team.RankAdjEM
+      }
+    }).filter(team => team.Seed < 17)
+
+    setData(processedData)
   }, []);
 
   return (
