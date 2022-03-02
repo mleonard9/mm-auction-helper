@@ -8,7 +8,7 @@ function RankingsTable() {
 
   const columns = [
     { title: 'Team', field: 'TeamName' },
-    { title: 'Seed', field: 'Seed', type: 'numeric' },
+    { title: 'Seed', field: 'Seed', type: 'numeric', defaultSort: 'asc' },
     { title: 'Value', field: 'Value', type: 'numeric' },
     // { title: 'NET', field: 'NET', type: 'numeric' },
     { title: 'KP', field: 'RankAdjEM', type: 'numeric' },
