@@ -9,11 +9,11 @@ function RankingsTable() {
   const columns = [
     { title: 'Team', field: 'TeamName' },
     { title: 'Seed', field: 'Seed', type: 'numeric' },
-    // { title: 'NET', field: 'NET', type: 'numeric' },
-    { title: 'RankAdjEM', field: 'RankAdjEM', type: 'numeric' },
-    { title: 'Rank OE', field: 'RankOE', type: 'numeric' },
-    { title: 'Rank DE', field: 'RankDE', type: 'numeric' },
     { title: 'Value', field: 'Value', type: 'numeric' },
+    // { title: 'NET', field: 'NET', type: 'numeric' },
+    { title: 'KP', field: 'RankAdjEM', type: 'numeric' },
+    { title: 'Off', field: 'RankOE', type: 'numeric' },
+    { title: 'Def', field: 'RankDE', type: 'numeric' },
   ]
 
   function getSeed(TeamName) {
@@ -44,8 +44,8 @@ function RankingsTable() {
       options={{
         sorting: true,
         search: false,
-        paging: false,
-        toolbar: false
+        toolbar: false,
+        pageSize: 8,
       }}
     />
   );
