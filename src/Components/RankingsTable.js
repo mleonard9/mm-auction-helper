@@ -2,9 +2,40 @@ import React, { useState, useEffect } from 'react';
 import KenPomData from '../Data/kenpom.json'
 import Seeds from '../Data/seeding.json'
 import MaterialTable from 'material-table';
+import { TablePagination } from '@material-ui/core';
+
+function PatchedPagination(props) {
+  const {
+    ActionsComponent,
+    onChangePage,
+    onChangeRowsPerPage,
+    ...tablePaginationProps
+  } = props;
+
+  return (
+    <TablePagination
+      {...tablePaginationProps}
+      // @ts-expect-error onChangePage was renamed to onPageChange
+      onPageChange={onChangePage}
+      onRowsPerPageChange={onChangeRowsPerPage}
+      ActionsComponent={(subprops) => {
+        const { onPageChange, ...actionsComponentProps } = subprops;
+        return (
+          // @ts-expect-error ActionsComponent is provided by material-table
+          <ActionsComponent
+            {...actionsComponentProps}
+            onChangePage={onPageChange}
+          />
+        );
+      }}
+    />
+  );
+}
 
 function RankingsTable() {  
   const [data, setData] = useState(KenPomData)
+  const [selectedTeams, setSelectedTeams] = useState([])
+  const [totalCost, setTotalCost] = useState(0);
 
   const columns = [
     { title: 'Team', field: 'TeamName' },
@@ -14,8 +45,28 @@ function RankingsTable() {
     { title: 'KP', field: 'RankAdjEM', type: 'numeric' },
     { title: 'Off', field: 'RankOE', type: 'numeric' },
     { title: 'Def', field: 'RankDE', type: 'numeric' },
+    { title: '$', field: 'Cost', type: 'numeric'},
   ]
 
+  const cost = new Map([
+    [1,1085],
+    [2,689],
+    [3,427],
+    [4,359],
+    [5,202],
+    [6,198],
+    [7,98],
+    [8,68],
+    [9,51],
+    [10,46],
+    [11,55],
+    [12,50],
+    [13,25],
+    [14,10],
+    [15,13],
+    [16,1]
+  ])
+  
   function getSeed(TeamName) {
     const seeding = Seeds.find(el => el.team === TeamName);
     if(seeding) {
@@ -25,12 +76,23 @@ function RankingsTable() {
     return 17
   }
 
+  function processSelections(selections) {
+    setSelectedTeams(selections)
+    var cost = 0
+    selections.forEach((team) => {
+      cost += team.Cost
+    })
+    setTotalCost(cost)
+  }
+
   useEffect(() => {
     let processedData = KenPomData.map((team) => {
+      const seed = getSeed(team.TeamName)
       return {
         ...team,
-        Seed: getSeed(team.TeamName),
-        Value: (getSeed(team.TeamName) * 4) - team.RankAdjEM
+        Seed: seed,
+        Value: (seed * 4) - team.RankAdjEM,
+        Cost: cost.get(seed)
       }
     }).filter(team => team.Seed < 17)
 
@@ -38,33 +100,30 @@ function RankingsTable() {
   }, []);
 
   return (
-    <MaterialTable
-      columns={columns}
-      data={data}        
-      options={{
-        sorting: true,
-        search: false,
-        toolbar: false,
-        pageSize: 8,
-      }}
-    />
+    <>
+      <MaterialTable
+        columns={columns}
+        data={data}        
+        options={{
+          sorting: true,
+          search: false,
+          toolbar: false,
+          selection: true,
+          pageSize: 8
+        }}
+        onSelectionChange={(rows) => processSelections(rows)}
+        components={{
+          Pagination: PatchedPagination,
+        }}
+      />
+        {
+          selectedTeams.map((team) => {
+            return <p key={team.TeamName}>{team.Seed + " " + team.TeamName}</p>
+          })
+        }
+        <h3>Total Cost: {totalCost}</h3>
+    </>
   );
 }
 
 export default RankingsTable
-
-// "TeamName": "Abilene Christian",
-// "Tempo": 71.4859,
-// "RankTempo": 41,
-// "AdjTempo": 70.9175,
-// "RankAdjTempo": 36,
-// "OE": 101.233,
-// "RankOE": 193,
-// "AdjOE": 102.588,
-// "RankAdjOE": 198,
-// "DE": 95.299,
-// "RankDE": 40,
-// "AdjDE": 100.248,
-// "RankAdjDE": 108,
-// "AdjEM": 2.34036,
-// "RankAdjEM": 140
