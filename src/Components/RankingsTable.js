@@ -97,7 +97,7 @@ function RankingsTable() {
     }).filter(team => team.Seed < 17)
 
     setData(processedData)
-  }, []);
+  }, [cost]);
 
   return (
     <>
