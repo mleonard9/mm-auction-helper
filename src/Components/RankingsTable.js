@@ -3,6 +3,7 @@ import KenPomData from '../Data/kenpom.json'
 import Seeds from '../Data/seeding.json'
 import MaterialTable from 'material-table';
 import { TablePagination } from '@material-ui/core';
+import styled from 'styled-components';
 
 function PatchedPagination(props) {
   const {
@@ -32,12 +33,19 @@ function PatchedPagination(props) {
   );
 }
 
+const RosterCard = styled.div`
+  width: 16rem;
+  margin: 2rem auto;
+  padding: .5rem 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`
+
 function RankingsTable() {  
   const [data, setData] = useState(KenPomData)
   const [selectedTeams, setSelectedTeams] = useState([])
   const [totalCost, setTotalCost] = useState(0);
 
-  const columns = [
+  const columns = [   
     { title: 'Team', field: 'TeamName' },
     { title: 'Seed', field: 'Seed', type: 'numeric', defaultSort: 'asc' },
     { title: 'Value', field: 'Value', type: 'numeric' },
@@ -116,12 +124,14 @@ function RankingsTable() {
           Pagination: PatchedPagination,
         }}
       />
+      <RosterCard>
         {
           selectedTeams.map((team) => {
-            return <p key={team.TeamName}>{team.Seed + " " + team.TeamName}</p>
+            return <p key={team.TeamName}>{team.Seed + " " + team.TeamName + " $" + team.Cost}</p>
           })
         }
         <h3>Total Cost: {totalCost}</h3>
+      </RosterCard>
     </>
   );
 }
