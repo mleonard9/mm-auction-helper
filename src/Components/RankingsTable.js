@@ -40,6 +40,27 @@ const RosterCard = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `
 
+const TeamInfo = styled.div`
+ display: flex;
+ justify-content: space-between;
+`
+const Seed = styled.div`
+ 
+`
+const TeamName = styled.div`
+ 
+`
+const ExpectedCost = styled.div`
+ 
+`
+
+const TotalCost = styled.div`
+  padding: .5rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 24;
+`
+
 function RankingsTable() {  
   const [data, setData] = useState(KenPomData)
   const [selectedTeams, setSelectedTeams] = useState([])
@@ -94,12 +115,18 @@ function RankingsTable() {
       [16,1]
     ])
 
+    function getValue(team) {
+      const seed = getSeed(team.TeamName)
+
+      return (seed * 4) - team.RankAdjEM
+    }
+
     let processedData = KenPomData.map((team) => {
       const seed = getSeed(team.TeamName)
       return {
         ...team,
         Seed: seed,
-        Value: (seed * 4) - team.RankAdjEM,
+        Value: getValue(team),
         Cost: cost.get(seed)
       }
     }).filter(team => team.Seed < 17)
@@ -127,10 +154,16 @@ function RankingsTable() {
       <RosterCard>
         {
           selectedTeams.map((team) => {
-            return <p key={team.TeamName}>{team.Seed + " " + team.TeamName + " $" + team.Cost}</p>
+            return (
+              <TeamInfo>
+                <Seed>{team.Seed}</Seed>
+                <TeamName>{team.TeamName}</TeamName>
+                <ExpectedCost>${team.Cost}</ExpectedCost>
+              </TeamInfo>
+            )
           })
         }
-        <h3>Total Cost: {totalCost}</h3>
+        <TotalCost>Total Cost: ${totalCost}</TotalCost>
       </RosterCard>
     </>
   );
