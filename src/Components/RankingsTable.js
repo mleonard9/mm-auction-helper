@@ -47,25 +47,6 @@ function RankingsTable() {
     { title: 'Def', field: 'RankDE', type: 'numeric' },
     { title: '$', field: 'Cost', type: 'numeric'},
   ]
-
-  const cost = new Map([
-    [1,1085],
-    [2,689],
-    [3,427],
-    [4,359],
-    [5,202],
-    [6,198],
-    [7,98],
-    [8,68],
-    [9,51],
-    [10,46],
-    [11,55],
-    [12,50],
-    [13,25],
-    [14,10],
-    [15,13],
-    [16,1]
-  ])
   
   function getSeed(TeamName) {
     const seeding = Seeds.find(el => el.team === TeamName);
@@ -86,6 +67,25 @@ function RankingsTable() {
   }
 
   useEffect(() => {
+    const cost = new Map([
+      [1,1085],
+      [2,689],
+      [3,427],
+      [4,359],
+      [5,202],
+      [6,198],
+      [7,98],
+      [8,68],
+      [9,51],
+      [10,46],
+      [11,55],
+      [12,50],
+      [13,25],
+      [14,10],
+      [15,13],
+      [16,1]
+    ])
+
     let processedData = KenPomData.map((team) => {
       const seed = getSeed(team.TeamName)
       return {
@@ -97,7 +97,7 @@ function RankingsTable() {
     }).filter(team => team.Seed < 17)
 
     setData(processedData)
-  }, [cost]);
+  }, []);
 
   return (
     <>
