@@ -25,7 +25,7 @@
   },
   {
     "seed": 2,
-    "team": "Wisconsin"
+    "team": "Purdue"
   },
   {
     "seed": 2,
@@ -36,50 +36,42 @@
     "team": "Villanova"
   },{
     "seed": 3,
-    "team": "Purdue"
+    "team": "Illinois"
   },{
     "seed": 3,
-    "team": "Texas Tech"
+    "team": "Tennessee"
   },{
     "seed": 3,
+    "team": "Wisconsin"
+  },
+  {
+    "seed": 4,
+    "team": "UCLA"
+  },
+  {
+    "seed": 4,
     "team": "Providence"
   },
   {
     "seed": 4,
-    "team": "Tennessee"
+    "team": "Texas Tech"
   },
   {
     "seed": 4,
-    "team": "Connecticut"
+    "team": "Arkansas"
   },
   {
-    "seed": 4,
-    "team": "Alabama"
-  },
-  {
-    "seed": 4,
-    "team": "Illinois"
-  },
-  {
-    "seed": 5,
-    "team": "UCLA"
-  },{
-    "seed": 5,
-    "team": "Texas"
-  },{
     "seed": 5,
     "team": "Saint Mary's"
   },{
     "seed": 5,
-    "team": "Arkansas"
-  },
-  {
-    "seed": 6,
-    "team": "Colorado St."
-  },
-  {
-    "seed": 6,
-    "team": "Houston"
+    "team": "LSU"
+  },{
+    "seed": 5,
+    "team": "Connecticut"
+  },{
+    "seed": 5,
+    "team": "Alabama"
   },
   {
     "seed": 6,
@@ -87,47 +79,55 @@
   },
   {
     "seed": 6,
-    "team": "Iowa St."
+    "team": "Houston"
   },
   {
-    "seed": 7,
-    "team": "TCU"
+    "seed": 6,
+    "team": "Texas"
   },
   {
-    "seed": 7,
-    "team": "Michigan St."
-  },
-  {
-    "seed": 7,
-    "team": "LSU"
+    "seed": 6,
+    "team": "Colorado St."
   },
   {
     "seed": 7,
     "team": "Ohio St."
   },
   {
-    "seed": 8,
+    "seed": 7,
+    "team": "Iowa"
+  },
+  {
+    "seed": 7,
+    "team": "Iowa St."
+  },
+  {
+    "seed": 7,
     "team": "Seton Hall"
   },
   {
     "seed": 8,
-    "team": "Marquette"
+    "team": "Michigan St."
   },
   {
     "seed": 8,
-    "team": "Wyoming"
+    "team": "TCU"
   },
   {
     "seed": 8,
     "team": "Boise St."
   },
   {
-    "seed": 9,
-    "team": "Iowa"
+    "seed": 8,
+    "team": "Murray St."
   },
   {
     "seed": 9,
-    "team": "Murray St."
+    "team": "San Diego St."
+  },
+  {
+    "seed": 9,
+    "team": "Marquette"
   },
   {
     "seed": 9,
@@ -135,15 +135,15 @@
   },
   {
     "seed": 9,
+    "team": "Wyoming"
+  },
+  {
+    "seed": 10,
     "team": "Notre Dame"
   },
   {
     "seed": 10,
-    "team": "Davidson"
-  },
-  {
-    "seed": 10,
-    "team": "San Diego St."
+    "team": "Miami FL"
   },
   {
     "seed": 10,
@@ -151,7 +151,15 @@
   },
   {
     "seed": 10,
-    "team": "San Franciso"
+    "team": "Davidson"
+  },
+  {
+    "seed": 11,
+    "team": "N. Carolina"
+  },
+  {
+    "seed": 11,
+    "team": "San Francisco"
   },
   {
     "seed": 11,
@@ -159,19 +167,7 @@
   },
   {
     "seed": 11,
-    "team": "Michigan"
-  },
-  {
-    "seed": 11,
-    "team": "Miami FL"
-  },
-  {
-    "seed": 11,
-    "team": "SMU"
-  },
-  {
-    "seed": 12,
-    "team": "BYU"
+    "team": "Loyola Chi."
   },
   {
     "seed": 12,
@@ -179,19 +175,15 @@
   },
   {
     "seed": 12,
-    "team": "VCU"
+    "team": "BYU"
   },
   {
     "seed": 12,
-    "team": "Florida"
+    "team": "Michigan"
   },
   {
-    "seed": 13,
+    "seed": 12,
     "team": "North Texas"
-  },
-  {
-    "seed": 13,
-    "team": "South Dakota St."
   },
   {
     "seed": 13,
@@ -199,31 +191,39 @@
   },
   {
     "seed": 13,
-    "team": "Towson"
+    "team": "South Dakota St."
   },
   {
-    "seed": 14,
+    "seed": 13,
     "team": "Toledo"
   },
   {
-    "seed": 14,
-    "team": "New Mexico St."
-  },
-  {
-    "seed": 14,
-    "team": "Vermont"
-  },
-  {
-    "seed": 14,
-    "team": "Northern Iowa"
-  },
-  {
-    "seed": 15,
-    "team": "Texas St."
-  },
-  {
-    "seed": 15,
+    "seed": 13,
     "team": "Princeton"
+  },
+  {
+    "seed": 14,
+    "team": ""
+  },
+  {
+    "seed": 14,
+    "team": ""
+  },
+  {
+    "seed": 14,
+    "team": ""
+  },
+  {
+    "seed": 14,
+    "team": ""
+  },
+  {
+    "seed": 15,
+    "team": ""
+  },
+  {
+    "seed": 15,
+    "team": ""
   },
   {
     "seed": 15,
